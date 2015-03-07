@@ -1,0 +1,5 @@
+#!/bin/bash
+
+## first draft
+# let's grab the basic text-message and send it
+cat message-source/basic.msg | sendmail -t
