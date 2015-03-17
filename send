@@ -1,5 +1,16 @@
 #!/bin/bash
 
+count=$1
+template=$2
+
+if [[ -z "$template" ]]; then
+	template="basic.msg"
+fi
+
 ## first draft
 # let's grab the basic text-message and send it
-cat message-source/basic.msg | sendmail -t
+i=0
+while [[ $i < $count ]]; do
+	cat message-source/$template | sendmail -t
+	i=$(expr $i + 1)
+done
