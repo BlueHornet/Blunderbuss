@@ -10,7 +10,7 @@ fi
 ## first draft
 # let's grab the basic text-message and send it
 i=0
-while [[ $i < $count ]]; do
+while [[ $i -lt $count ]]; do
 	cat message-source/$template | sendmail -t
 	i=$(expr $i + 1)
 done
