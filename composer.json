@@ -1,0 +1,27 @@
+{
+	"name": "bluehornet/blunderbuss",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Randall Kahler",
+			"email": "rkahler@bluehornet.com",
+			"homepage": "http://www.bluehornet.com",
+			"role": "Developer"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://packages.zendframework.com/"
+		}
+	],
+	"require": {
+		"php": ">=5.3.23",
+		"zendframework/zend-mail": "^2.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"Blunderbuss\\": "./"
+		}
+	}
+}
