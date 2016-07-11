@@ -1,0 +1,9 @@
+textarea#messageData {
+	width: 500px;
+	height: 250px;
+}
+
+textarea#messageData.sample {
+	color: gray;
+	font-style: italic;
+}

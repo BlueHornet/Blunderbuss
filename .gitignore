@@ -24,3 +24,7 @@ nbproject
 
 # User-land message templates
 message-source/user-*
+
+# Composer files
+composer.lock
+vendor/
