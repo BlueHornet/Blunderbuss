@@ -31,7 +31,7 @@
         <legend>Message Data</legend>
         <textarea id="messageData" name="messageData">
 {
-  "template": "From: {{ fromname }} <{{ fromaddr }}>\nTo: {{ toaddr }}\nSubject: {{ subject }}\n\nHello World",
+  "template": "From: {{ fromname }} <{{ fromaddr }}>\r\nTo: {{ toaddr }}\r\nSubject: {{ subject }}\r\n\r\nHello World",
   "defaults": { 
     "fromname": "Mail Sender",
     "fromaddr": "sender@example.com",
