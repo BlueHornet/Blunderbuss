@@ -82,6 +82,14 @@ class Blunderbuss {
         foreach ($this->_recipients as $i => $r) {
             // Build replacements array
             $re = array();
+
+            $repeat = 1;
+            $opt = '!repeat';
+            if (isset($r->$opt)) {
+                $repeat = $r->$opt;
+                unset($r->$opt);
+            }
+            
             foreach ($r as $k => $v) {
                 $re[$k] = $v;
             }
@@ -94,8 +102,18 @@ class Blunderbuss {
             foreach ($toAddrs as $to) {
                 $toAddr[] = $to->getEmail();
             }
-            $this->_smtp->send($email);
-            $this->_responses[$i] = array( 'to' => implode(',', $toAddr), 'response' => $this->_smtp->getConnection()->getResponse());
+            
+            for ($j = 0; $j < $repeat; $j++) {
+                $this->_smtp->send($email);
+                $response = $this->_smtp->getConnection()->getResponse();
+                if ($this->streamOutput === true) {
+                    echo ($i+1) . '.' . ($j+1) . ": 'to' => " . implode(',', $toAddr) . ", 'response' => " . trim($response[0]) . "\n";
+                    ob_flush();
+                    flush();
+                } else {
+                    $this->_responses["$i.$j"] = array( 'to' => implode(',', $toAddr), 'response' => $response[0]);
+                }
+            }
         }
 
         return $this;
